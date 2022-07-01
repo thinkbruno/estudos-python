@@ -2,8 +2,6 @@
 # -*- coding: utf-8 -*-
 
 # ATENÇÃO! NÃO NOMEIE O ARQUIVO COM O NOME DA BIBLIOTECA (speedtest.py) POIS DA ERRO DE CIRCULAR IMPORT!!!!!
-
-# pip install speedtest-cli
 import speedtest
 
 test = speedtest.Speedtest()

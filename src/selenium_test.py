@@ -1,8 +1,6 @@
 # PEP8 OK
 # -*- coding: utf-8 -*-
 
-# pip install selenium
-# pip install chromedriver-autoinstaller
 import time
 
 import chromedriver_autoinstaller

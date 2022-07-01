@@ -1,7 +1,6 @@
 # PEP8 OK
 # -*- coding: utf-8 -*-
 
-# pip install faker
 import json
 
 from faker import Faker

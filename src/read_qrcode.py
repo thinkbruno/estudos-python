@@ -1,8 +1,6 @@
 # PEP8 OK
 # -*- coding: utf-8 -*-
 
-# pip install pillow
-# pip install pyzbar
 import webbrowser
 
 from PIL import Image

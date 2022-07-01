@@ -1,0 +1,13 @@
+forex-python
+faker
+phonenumbers
+reportlab
+pyqrcode
+pypng
+pywhatkit
+pillow
+pyzbar
+selenium
+chromedriver-autoinstaller
+pyshorteners
+speedtest-cli

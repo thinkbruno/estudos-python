@@ -1,13 +1,7 @@
 # PEP8 OK
 # -*- coding: utf-8 -*-
 
-# pip install pyqrcode
-# pip install pypng
-
-# import png
 import pyqrcode
-
-# from pyqrcode import QRCode
 
 url = 'https://allmylinks.com/ramosbruno90'
 

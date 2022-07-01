@@ -1,7 +1,6 @@
 # PEP8 OK
 # -*- coding: utf-8 -*-
 
-# pip install faker
 from faker import Faker
 
 obj_fake = Faker()

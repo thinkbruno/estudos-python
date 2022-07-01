@@ -1,8 +1,6 @@
 # PEP8 OK
 # -*- coding: utf-8 -*-
 
-# pip install phonenumbers
-
 import phonenumbers
 from phonenumbers import carrier, geocoder
 

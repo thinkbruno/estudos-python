@@ -1,7 +1,6 @@
 # PEP8 OK
 # -*- coding: utf-8 -*-
 
-# pip install reportlab
 from reportlab.pdfgen import canvas
 
 

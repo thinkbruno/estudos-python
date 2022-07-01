@@ -3,9 +3,6 @@
 
 import pyshorteners
 
-# pip install pyshorteners
-
-
 url = 'https://allmylinks.com/ramosbruno90'
 
 s = pyshorteners.Shortener()
