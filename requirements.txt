@@ -11,3 +11,5 @@ selenium
 chromedriver-autoinstaller
 pyshorteners
 speedtest-cli
+psutil
+wmi
