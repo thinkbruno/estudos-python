@@ -29,4 +29,6 @@
   </a>
 </div>
 
+To import the libs, just use pip install -r requirements.txt
+
 ###
