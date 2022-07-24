@@ -13,3 +13,4 @@ pyshorteners
 speedtest-cli
 psutil
 wmi
+googlesearch-python
