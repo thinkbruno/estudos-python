@@ -6,6 +6,9 @@ import time
 import chromedriver_autoinstaller
 from selenium import webdriver
 
+"""testando uso de selenium
+"""
+
 chromedriver_autoinstaller.install()
 
 driver = webdriver.Chrome()

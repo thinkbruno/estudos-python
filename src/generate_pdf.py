@@ -3,6 +3,8 @@
 
 from reportlab.pdfgen import canvas
 
+"""estudo: criação de doc em pdf
+"""
 
 def generate_pdf(list):
     try:

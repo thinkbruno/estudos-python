@@ -3,6 +3,9 @@
 
 from datetime import datetime
 
+"""Cálculo de idade simples, utilizando input e datetime
+"""
+    
 ano_nasc = int(input('Ano que você nasceu '))
 mes_nasc = int(input('Mês que você nasceu '))
 dia_nasc = int(input('Dia que você nasceu '))

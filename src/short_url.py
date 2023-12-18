@@ -1,9 +1,16 @@
 # PEP8 OK
 # -*- coding: utf-8 -*-
 
+import os
 import pyshorteners
 
-url = 'https://allmylinks.com/ramosbruno90'
+from dotenv import load_dotenv
+load_dotenv()
+
+"""encurtando urls
+"""
+
+url = os.getenv("URL")
 
 s = pyshorteners.Shortener()
 

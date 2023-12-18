@@ -14,3 +14,4 @@ speedtest-cli
 psutil
 wmi
 googlesearch-python
+python-dotenv

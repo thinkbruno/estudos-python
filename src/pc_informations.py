@@ -3,6 +3,9 @@
 
 import wmi
 
+"""printando informações do pc
+"""
+
 c = wmi.WMI()
 my_system = c.WIN32_ComputerSystem()[0]
 

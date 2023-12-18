@@ -5,6 +5,9 @@ import json
 
 from faker import Faker
 
+"""Criando um JSON com dados aleatórios
+"""
+
 obj_fake = Faker()
 
 obj = {
@@ -18,7 +21,7 @@ obj = {
 }
 
 try:
-    with open(r'.\src\data.json', 'w', encoding='utf8') as json_file:
+    with open(r'data.json', 'w', encoding='utf8') as json_file:
         json.dump(obj, json_file, indent=4, ensure_ascii=False)
     print('Arquivo concluído')
 except:

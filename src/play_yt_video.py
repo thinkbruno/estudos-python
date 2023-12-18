@@ -1,8 +1,15 @@
 # PEP8 OK
 # -*- coding: utf-8 -*-
 
+import os
 import pywhatkit as kit
 
-url = "https://www.youtube.com/watch?v=5vRlJrkxsqo&ab_channel=THEBESTTHEBESTTHEBE"
+from dotenv import load_dotenv
+load_dotenv()
+
+"""executando video do youtube, adicionar link no seu .env
+"""
+
+url = os.getenv("YT_VIDEO_URL")
 
 kit.playonyt(url)

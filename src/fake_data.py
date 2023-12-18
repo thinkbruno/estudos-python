@@ -3,6 +3,9 @@
 
 from faker import Faker
 
+"""printando dados aleatórios, estudo da lib faker
+"""
+
 obj_fake = Faker()
 
 name = obj_fake.name()

@@ -4,6 +4,9 @@
 import phonenumbers
 from phonenumbers import carrier, geocoder
 
+"""descobrindo operadora e local de um número de celular (pode ser que em casos de portabilidade a api aponte a operadora antiga)
+"""
+
 mobile = input("Digite seu celular com DDD (Somente números): ")
 
 phoneNumber = phonenumbers.parse(f"+55{mobile}")
