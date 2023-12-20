@@ -1,3 +1,6 @@
+# PEP8 OK
+# -*- coding: utf-8 -*-
+
 import requests
 import os
 from datetime import datetime
