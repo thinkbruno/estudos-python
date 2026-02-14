@@ -1,3 +1,15 @@
-PyWhatKit_DB.txt
-.env
-my_venv/
+# Ambiente virtual
+venv/
+.env/
+__pycache__/
+*.pyc
+
+# Pytest
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
