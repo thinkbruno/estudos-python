@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Estudos Python</title>
+</head>
+<body>
+    <h1>Gerador de Senha</h1>
+    <input type="number" id="length" value="12">
+    <button onclick="generate()">Gerar</button>
+    <p id="result"></p>
+
+    <script>
+        async function generate() {
+            const length = document.getElementById("length").value;
+            const response = await fetch(`/utils/password?length=${length}`);
+            const data = await response.json();
+            document.getElementById("result").innerText = data.password;
+        }
+    </script>
+</body>
+</html>
