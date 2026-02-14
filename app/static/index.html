@@ -8,6 +8,11 @@
     <input type="number" id="length" value="12">
     <button onclick="generate()">Gerar</button>
     <p id="result"></p>
+    </br>
+    <h1>Calcular Idade</h1>
+    <input type="date" id="birthdate">
+    <button onclick="calculateAge()">Calcular</button>
+    <p id="ageResult"></p>
 
     <script>
         async function generate() {
@@ -16,6 +21,27 @@
             const data = await response.json();
             document.getElementById("result").innerText = data.password;
         }
+        async function calculateAge() {
+        const birth = document.getElementById("birthdate").value;
+        const response = await fetch(`/age/calculate?birth_date=${birth}`);
+        const data = await response.json();
+
+        if (data.detail) {
+            document.getElementById("ageResult").innerText = data.detail;
+            return;
+        }
+
+        if (data.years > 0) {
+            document.getElementById("ageResult").innerText =
+                `${data.years} ano(s), ${data.months} mês(es)`;
+        } else if (data.months > 0) {
+            document.getElementById("ageResult").innerText =
+                `${data.months} mês(es), ${data.days} dia(s)`;
+        } else {
+            document.getElementById("ageResult").innerText =
+                `${data.days} dia(s)`;
+        }
+    }
     </script>
 </body>
 </html>
