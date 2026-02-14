@@ -2,17 +2,64 @@
 <html>
 <head>
     <title>Estudos Python</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f4f6f8;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        button {
+            padding: 8px 12px;
+            cursor: pointer;
+            border: none;
+            background: #2563eb;
+            color: white;
+            border-radius: 4px;
+        }
+
+        input {
+            padding: 6px;
+            margin-right: 8px;
+        }
+
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <h1>Gerador de Senha</h1>
     <input type="number" id="length" value="12">
     <button onclick="generate()">Gerar</button>
     <p id="result"></p>
-    </br>
+    </hr>
     <h1>Calcular Idade</h1>
     <input type="date" id="birthdate">
     <button onclick="calculateAge()">Calcular</button>
     <p id="ageResult"></p>
+    </hr>
+    <h1>Status da Bateria</h1>
+    <button onclick="getBattery()">Verificar</button>
+    <p id="batteryResult"></p>
+    </hr>
+    <h1>Converter USD → BRL</h1>
+    <input type="number" id="usdAmount" step="0.01" placeholder="Valor em USD">
+    <button onclick="convertCurrency()">Converter</button>
+    <p id="currencyResult"></p>
 
     <script>
         async function generate() {
@@ -42,6 +89,39 @@
                 `${data.days} dia(s)`;
         }
     }
+    async function getBattery() {
+    const response = await fetch(`/battery/`);
+    const data = await response.json();
+
+    if (data.detail) {
+        document.getElementById("batteryResult").innerText = data.detail;
+        return;
+    }
+
+    document.getElementById("batteryResult").innerText =
+        `Bateria: ${data.battery_percent}%`;
+}
+
+async function convertCurrency() {
+    const amount = document.getElementById("usdAmount").value;
+
+    if (!amount || amount <= 0) {
+        document.getElementById("currencyResult").innerText =
+            "Informe um valor válido.";
+        return;
+    }
+
+    const response = await fetch(`/currency/usd-to-brl?amount=${amount}`);
+    const data = await response.json();
+
+    if (data.detail) {
+        document.getElementById("currencyResult").innerText = data.detail;
+        return;
+    }
+
+    document.getElementById("currencyResult").innerText =
+        `USD ${data.usd} = R$ ${data.brl}`;
+}
     </script>
 </body>
 </html>
