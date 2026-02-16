@@ -5,6 +5,7 @@ from app.routers import utils
 from app.routers import age
 from app.routers import battery
 from app.routers import currency
+from app.routers import json_generator
 
 app = FastAPI(title="Estudos Python API")
 
@@ -12,6 +13,7 @@ app.include_router(utils.router)
 app.include_router(age.router)
 app.include_router(battery.router)
 app.include_router(currency.router)
+app.include_router(json_generator.router)
 
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 

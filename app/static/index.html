@@ -60,6 +60,10 @@
     <input type="number" id="usdAmount" step="0.01" placeholder="Valor em USD">
     <button onclick="convertCurrency()">Converter</button>
     <p id="currencyResult"></p>
+    </hr>
+    <h1>Gerar JSON Fake</h1>
+    <button onclick="generateAndSaveJson()">Gerar e Salvar</button>
+    <pre id="jsonResult"></pre>
 
     <script>
         async function generate() {
@@ -121,6 +125,11 @@ async function convertCurrency() {
 
     document.getElementById("currencyResult").innerText =
         `USD ${data.usd} = R$ ${data.brl}`;
+}
+
+
+async function generateAndSaveJson() {
+    window.location.href = "/json-generator";
 }
     </script>
 </body>
