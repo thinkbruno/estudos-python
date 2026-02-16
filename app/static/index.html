@@ -64,6 +64,11 @@
     <h1>Gerar JSON Fake</h1>
     <button onclick="generateAndSaveJson()">Gerar e Salvar</button>
     <pre id="jsonResult"></pre>
+    </hr>
+    <h2>Descobrir Operadora</h2>
+    <input type="text" id="phone" placeholder="Digite o número com DDD">
+    <button onclick="discoverOperator()">Consultar</button>
+    <p id="operatorResult"></p>
 
     <script>
         async function generate() {
@@ -130,6 +135,21 @@ async function convertCurrency() {
 
 async function generateAndSaveJson() {
     window.location.href = "/json-generator";
+}
+
+async function discoverOperator() {
+    const number = document.getElementById("phone").value;
+
+    const response = await fetch(`/discover-operator?number=${number}`);
+    const data = await response.json();
+
+    if (response.status === 200) {
+        document.getElementById("operatorResult").innerText =
+            `Operadora: ${data.operadora} | Estado: ${data.estado}`;
+    } else {
+        document.getElementById("operatorResult").innerText =
+            data.detail;
+    }
 }
     </script>
 </body>
