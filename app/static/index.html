@@ -73,6 +73,10 @@
 <h2>Extrair Texto da URL</h2>
     <input type="text" id="urlInput" placeholder="Cole a URL aqui">
     <button onclick="downloadText()">Extrair e Baixar</button>
+</hr>
+<h2>Gerar PDF</h2>
+<button onclick="downloadPDF()">Gerar PDF</button>
+</hr>
 
     <script>
         async function generate() {
@@ -164,6 +168,9 @@ function downloadText() {
     }
 
     window.location.href = `/download-text?url=${encodeURIComponent(url)}`;
+}
+function downloadPDF() {
+    window.location.href = "/generate-pdf";
 }
     </script>
 </body>
