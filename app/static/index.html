@@ -77,6 +77,10 @@
 <h2>Gerar PDF</h2>
 <button onclick="downloadPDF()">Gerar PDF</button>
 </hr>
+<h2>Speedtest</h2>
+    <button onclick="runSpeedtest()">Executar</button>
+    <p id="speedResult"></p>
+</hr>
 
     <script>
         async function generate() {
@@ -171,6 +175,20 @@ function downloadText() {
 }
 function downloadPDF() {
     window.location.href = "/generate-pdf";
+}
+async function runSpeedtest() {
+    document.getElementById("speedResult").innerText = "Executando teste...";
+
+    const response = await fetch("/speedtest");
+    const data = await response.json();
+
+    if (response.status === 200) {
+        document.getElementById("speedResult").innerText =
+            `Download: ${data.download_mbps} Mbps | Upload: ${data.upload_mbps} Mbps`;
+    } else {
+        document.getElementById("speedResult").innerText =
+            data.detail;
+    }
 }
     </script>
 </body>
