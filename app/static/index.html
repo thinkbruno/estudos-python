@@ -69,6 +69,10 @@
     <input type="text" id="phone" placeholder="Digite o número com DDD">
     <button onclick="discoverOperator()">Consultar</button>
     <p id="operatorResult"></p>
+</hr>
+<h2>Extrair Texto da URL</h2>
+    <input type="text" id="urlInput" placeholder="Cole a URL aqui">
+    <button onclick="downloadText()">Extrair e Baixar</button>
 
     <script>
         async function generate() {
@@ -150,6 +154,16 @@ async function discoverOperator() {
         document.getElementById("operatorResult").innerText =
             data.detail;
     }
+}
+function downloadText() {
+    const url = document.getElementById("urlInput").value;
+
+    if (!url) {
+        alert("Digite uma URL válida");
+        return;
+    }
+
+    window.location.href = `/download-text?url=${encodeURIComponent(url)}`;
 }
     </script>
 </body>
