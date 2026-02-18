@@ -188,7 +188,7 @@ Production-ready Codebase
 
 # 👨‍💻 Author
 
-<table border="0"> <tr> <td> <a href="https://www.linkedin.com/in/ramosbruno90/" target="_blank"> <img src="https://img.shields.io/static/v1?message=Bruno%20Ramos&logo=linkedin&label=&color=0077B5&logoColor=white&style=for-the-badge" height="35" alt="LinkedIn Bruno Ramos" /> </a> </td> </tr> </table>
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Bruno%20Ramos-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ramosbruno90/)
 
 ---
 
