@@ -81,7 +81,10 @@
     <button onclick="runSpeedtest()">Executar</button>
     <p id="speedResult"></p>
 </hr>
-
+<h2>Gerar QRCode</h2>
+    <input type="text" id="qrUrl" placeholder="Digite a URL">
+    <button onclick="openQRCode()">Gerar QRCode</button>
+</hr>
     <script>
         async function generate() {
             const length = document.getElementById("length").value;
@@ -189,6 +192,16 @@ async function runSpeedtest() {
         document.getElementById("speedResult").innerText =
             data.detail;
     }
+}
+function openQRCode() {
+    const url = document.getElementById("qrUrl").value;
+
+    if (!url) {
+        alert("Digite uma URL válida");
+        return;
+    }
+
+    window.open(`/generate-qrcode?url=${encodeURIComponent(url)}`, "_blank");
 }
     </script>
 </body>
