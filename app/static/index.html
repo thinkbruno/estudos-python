@@ -90,6 +90,12 @@
 <button onclick="readQRCode()">Ler</button>
 <p id="qrResult"></p>
 </hr>
+<h1>Informações do PC</h1>
+
+    <button onclick="loadInfo()">Carregar Informações</button>
+
+    <pre id="result"></pre>
+</hr>
     <script>
         async function generate() {
             const length = document.getElementById("length").value;
@@ -239,6 +245,13 @@ async function readQRCode() {
         document.getElementById("qrResult").innerText = data.detail;
     }
 }
+async function loadInfo() {
+            const response = await fetch("/pc-info");
+            const data = await response.json();
+
+            document.getElementById("result").innerText =
+                JSON.stringify(data, null, 2);
+        }
     </script>
 </body>
 </html>
