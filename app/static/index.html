@@ -85,6 +85,11 @@
     <input type="text" id="qrUrl" placeholder="Digite a URL">
     <button onclick="openQRCode()">Gerar QRCode</button>
 </hr>
+<h2>Ler QRCode</h2>
+<input type="file" id="qrFile">
+<button onclick="readQRCode()">Ler</button>
+<p id="qrResult"></p>
+</hr>
     <script>
         async function generate() {
             const length = document.getElementById("length").value;
@@ -202,6 +207,37 @@ function openQRCode() {
     }
 
     window.open(`/generate-qrcode?url=${encodeURIComponent(url)}`, "_blank");
+}
+async function readQRCode() {
+    const fileInput = document.getElementById("qrFile");
+    const file = fileInput.files[0];
+
+    if (!file) {
+        alert("Selecione uma imagem");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await fetch("/read-qrcode", {
+        method: "POST",
+        body: formData
+    });
+
+    const data = await response.json();
+
+    if (response.status === 200) {
+        document.getElementById("qrResult").innerText = data.content;
+
+        // Se for URL, abre nova aba
+        if (data.content.startsWith("http")) {
+            window.open(data.content, "_blank");
+        }
+
+    } else {
+        document.getElementById("qrResult").innerText = data.detail;
+    }
 }
     </script>
 </body>
