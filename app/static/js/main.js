@@ -27,17 +27,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.getElementById("btnCurrency").addEventListener("click", async () => {
+
+        const button = document.getElementById("btnCurrency");
+        const result = document.getElementById("currencyResult");
         const amount = document.getElementById("usdAmount").value;
-        if (!amount || amount <= 0) {
-            document.getElementById("currencyResult").innerText = "Informe um valor válido.";
+
+        if (!amount) {
+            result.innerHTML = "Informe um valor.";
             return;
         }
 
-        const response = await fetch(`/currency/usd-to-brl?amount=${amount}`);
-        const data = await response.json();
+        button.disabled = true;
+        button.innerHTML = 'Convertendo <span class="spinner"></span>';
+        result.innerHTML = '<span class="loading-text">Buscando cotação...</span>';
 
-        document.getElementById("currencyResult").innerText =
-            data.detail ? data.detail : `USD ${data.usd} = R$ ${data.brl}`;
+        try {
+            const response = await fetch(`/currency/usd-to-brl?amount=${amount}`);
+            const data = await response.json();
+            result.innerHTML = `R$ ${data.brl}`;
+
+        } catch (error) {
+            result.innerHTML = "Erro ao converter moeda.";
+        } finally {
+            button.disabled = false;
+            button.innerHTML = "Converter";
+        }
+
     });
 
     document.getElementById("btnJson").addEventListener("click", () => {
@@ -67,16 +82,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.getElementById("btnSpeedtest").addEventListener("click", async () => {
+
+        const button = document.getElementById("btnSpeedtest");
         const result = document.getElementById("speedResult");
-        result.innerText = "Executando...";
 
-        const response = await fetch("/speedtest");
-        const data = await response.json();
+        // Estado de loading
+        button.disabled = true;
+        button.innerHTML = 'Executando <span class="spinner"></span>';
+        result.innerHTML = '<span class="loading-text">Testando velocidade...</span>';
 
-        result.innerText =
-            response.status === 200
-                ? `Download: ${data.download_mbps} Mbps | Upload: ${data.upload_mbps} Mbps`
-                : data.detail;
+        try {
+            const response = await fetch("/speedtest");
+            const data = await response.json();
+            result.innerHTML = `
+                Download: ${data.download_mbps} Mbps<br>
+                Upload: ${data.upload_mbps} Mbps<br>
+            `;
+
+        } catch (error) {
+            result.innerHTML = "Erro ao executar speedtest.";
+        } finally {
+            button.disabled = false;
+            button.innerHTML = "Executar";
+        }
+
     });
 
     document.getElementById("btnQrGenerate").addEventListener("click", () => {
@@ -112,15 +141,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const modal = document.getElementById("pcModal");
         const content = document.getElementById("pcModalContent");
-    
+
         content.innerHTML = "Carregando...";
-    
+
         modal.style.display = "block";
-    
+
         try {
             const response = await fetch("/pc-info");
             const data = await response.json();
-    
+
             content.innerHTML = `
                 <ul class="pc-list">
                     <li><span>Sistema:</span> ${data.sistema_operacional}</li>
@@ -133,18 +162,18 @@ document.addEventListener("DOMContentLoaded", () => {
                     <li><span>Uso de memória:</span> ${data.memoria_usada_percentual}%</li>
                 </ul>
             `;
-    
+
         } catch (error) {
             content.innerHTML = "Erro ao carregar informações.";
         }
-    
+
     });
-    
+
     // Fechar modal
     document.getElementById("closePcModal").addEventListener("click", () => {
         document.getElementById("pcModal").style.display = "none";
     });
-    
+
     // Fechar clicando fora
     window.addEventListener("click", (event) => {
         const modal = document.getElementById("pcModal");
