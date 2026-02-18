@@ -1,34 +1,21 @@
-# PEP8 OK
-# -*- coding: utf-8 -*-
-
 import platform
+import psutil
+from fastapi import APIRouter
 
-try:
-    import wmi
-except ImportError:
-    wmi = None
+router = APIRouter()
 
 
+@router.get("/pc-info")
 def get_pc_info():
-    if wmi:
-        c = wmi.WMI()
-        system = c.Win32_ComputerSystem()[0]
 
-        return {
-            "manufacturer": system.Manufacturer,
-            "model": system.Model,
-            "name": system.Name,
-            "cpu_count": system.NumberOfProcessors,
-            "architecture": system.SystemType,
-            "family": system.SystemFamily,
-        }
-
-    # fallback para outros sistemas
     return {
-        "manufacturer": "N/A",
-        "model": platform.machine(),
-        "name": platform.node(),
-        "cpu_count": platform.processor(),
-        "architecture": platform.architecture()[0],
-        "family": platform.system(),
+        "fabricante": platform.node() if platform.node() else "N/A",
+        "sistema_operacional": platform.system(),
+        "versao_sistema": platform.version(),
+        "arquitetura": platform.machine(),
+        "processador": platform.processor(),
+        "nucleos_cpu": psutil.cpu_count(logical=False),
+        "nucleos_logicos": psutil.cpu_count(logical=True),
+        "memoria_total_gb": round(psutil.virtual_memory().total / (1024**3), 2),
+        "memoria_usada_percentual": psutil.virtual_memory().percent,
     }

@@ -108,13 +108,49 @@ document.addEventListener("DOMContentLoaded", () => {
             window.open(data.content, "_blank");
         }
     });
-
     document.getElementById("btnPcInfo").addEventListener("click", async () => {
-        const response = await fetch("/pc-info");
-        const data = await response.json();
 
-        document.getElementById("pcInfoResult").innerText =
-            JSON.stringify(data, null, 2);
+        const modal = document.getElementById("pcModal");
+        const content = document.getElementById("pcModalContent");
+    
+        content.innerHTML = "Carregando...";
+    
+        modal.style.display = "block";
+    
+        try {
+            const response = await fetch("/pc-info");
+            const data = await response.json();
+    
+            content.innerHTML = `
+                <ul class="pc-list">
+                    <li><span>Sistema:</span> ${data.sistema_operacional}</li>
+                    <li><span>Versão:</span> ${data.versao_sistema}</li>
+                    <li><span>Arquitetura:</span> ${data.arquitetura}</li>
+                    <li><span>Processador:</span> ${data.processador || "Não disponível"}</li>
+                    <li><span>Núcleos físicos:</span> ${data.nucleos_cpu}</li>
+                    <li><span>Núcleos lógicos:</span> ${data.nucleos_logicos}</li>
+                    <li><span>Memória total:</span> ${data.memoria_total_gb} GB</li>
+                    <li><span>Uso de memória:</span> ${data.memoria_usada_percentual}%</li>
+                </ul>
+            `;
+    
+        } catch (error) {
+            content.innerHTML = "Erro ao carregar informações.";
+        }
+    
+    });
+    
+    // Fechar modal
+    document.getElementById("closePcModal").addEventListener("click", () => {
+        document.getElementById("pcModal").style.display = "none";
+    });
+    
+    // Fechar clicando fora
+    window.addEventListener("click", (event) => {
+        const modal = document.getElementById("pcModal");
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
     });
 
 });
