@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Python Toolbox</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+  </head>
+
+  <body>
+    <h1>🛠 Python Toolbox</h1>
+
+    <div class="grid">
+      <!-- GERADOR DE SENHA -->
+      <div class="card">
+        <h2>🔐 Gerador de Senha</h2>
+        <input type="number" id="length" value="12" />
+        <button id="btnPassword">Gerar</button>
+        <div class="result" id="passwordResult"></div>
+      </div>
+
+      <!-- CALCULAR IDADE -->
+      <div class="card">
+        <h2>📅 Calcular Idade</h2>
+        <input type="date" id="birthdate" />
+        <button id="btnAge">Calcular</button>
+        <div class="result" id="ageResult"></div>
+      </div>
+
+      <!-- BATERIA -->
+      <div class="card">
+        <h2>🔋 Status da Bateria</h2>
+        <button id="btnBattery">Verificar</button>
+        <div class="result" id="batteryResult"></div>
+      </div>
+
+      <!-- CONVERSÃO MOEDA -->
+      <div class="card">
+        <h2>💵 USD → BRL</h2>
+        <input
+          type="number"
+          id="usdAmount"
+          step="0.01"
+          placeholder="Valor em USD"
+        />
+        <button id="btnCurrency">Converter</button>
+        <div class="result" id="currencyResult"></div>
+      </div>
+
+      <!-- JSON FAKE -->
+      <div class="card">
+        <h2>🧾 Gerar JSON Fake</h2>
+        <button id="btnJson">Gerar e Baixar</button>
+      </div>
+
+      <!-- OPERADORA -->
+      <div class="card">
+        <h2>📱 Descobrir Operadora</h2>
+        <input type="text" id="phone" placeholder="Número com DDD" />
+        <button id="btnOperator">Consultar</button>
+        <div class="result" id="operatorResult"></div>
+      </div>
+
+      <!-- EXTRAIR TEXTO -->
+      <div class="card">
+        <h2>🌐 Extrair Texto da URL</h2>
+        <input type="text" id="urlInput" placeholder="Cole a URL aqui" />
+        <button id="btnDownloadText">Extrair e Baixar</button>
+      </div>
+
+      <!-- PDF -->
+      <div class="card">
+        <h2>📄 Gerar PDF</h2>
+        <button id="btnPdf">Gerar PDF</button>
+      </div>
+
+      <!-- SPEEDTEST -->
+      <div class="card">
+        <h2>🚀 Speedtest</h2>
+        <button id="btnSpeedtest">Executar</button>
+        <div class="result" id="speedResult"></div>
+      </div>
+
+      <!-- GERAR QRCODE -->
+      <div class="card">
+        <h2>🔳 Gerar QRCode</h2>
+        <input type="text" id="qrUrl" placeholder="Digite a URL" />
+        <button id="btnQrGenerate">Gerar</button>
+      </div>
+
+      <!-- LER QRCODE -->
+      <div class="card">
+        <h2>📷 Ler QRCode</h2>
+        <input type="file" id="qrFile" />
+        <button id="btnQrRead">Ler</button>
+        <div class="result" id="qrResult"></div>
+      </div>
+
+      <!-- PC INFO -->
+      <div class="card">
+        <h2>💻 Informações do PC</h2>
+        <button id="btnPcInfo">Carregar</button>
+        <div class="result" id="pcInfoResult"></div>
+      </div>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+  </body>
+</html>

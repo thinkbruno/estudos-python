@@ -14,6 +14,8 @@ from app.routers import qrcode_generator
 from app.routers import qrcode_reader
 from app.routers import pc_info
 
+import os
+
 app = FastAPI(title="Estudos Python API")
 
 app.include_router(utils.router)
@@ -34,4 +36,4 @@ app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 @app.get("/")
 def read_index():
-    return FileResponse("app/static/index.html")
+    return FileResponse("app/static/templates/index.html")
