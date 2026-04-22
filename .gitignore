@@ -1,17 +1,72 @@
-# Ambiente virtual
-venv/
-.env/
+
+
+
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
 
-# Pytest
+
+build/
+dist/
+*.egg-info/
+.eggs/
+
+
+.venv/
+venv/
+env/
+ENV/
+
+
+
+
+db.sqlite3
+db.sqlite3-journal
+
+
+media/
+staticfiles/
+
+
+
+
+.env
+.env.*
+*.env
+
+
+
+
 .pytest_cache/
+.coverage
+htmlcov/
 
-# IDE
+
+
+
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# OS
+
+
+
 .DS_Store
+Thumbs.db
+
+
+
+
+*.log
+tmp/
+temp/
+
+
+
+
+*.pdf
+*.png
+*.jpg
+downloads/
+output/
